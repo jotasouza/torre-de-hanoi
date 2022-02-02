@@ -1,0 +1,144 @@
+/*=== GENERAL FONT ===*/
+@import url('https://fonts.googleapis.com/css2?family=Oswald&display=swap');
+
+/*======== DEFINIÇÃO DE VARIÁVEIS GLOBAIS ========*/
+:root{
+    /*=== GENERAL COLORS  ===*/
+    --color-background: #ffffea;
+    --color-primary: #2b2c30;
+    --color-secundary: #35313b;
+    --color-tertiary: white;
+    --color-buttons: #2f3559;
+
+    /*=== TOWERS COLOR  ===*/
+    --color-pin: #b88c87;
+
+    /*=== DISC COLORS  ===*/
+    --color-first-position: #2f2e30;
+    --color-second-position: #e84b2c;
+    --color-third-position: #e6d839;
+    --color-fourth-position: #7cd164;
+    --color-fifth-position: #2eb8ac;
+
+    /*==== FONT ======*/
+    --font-primary: 'Oswald', sans-serif;
+
+}
+
+/*===== RESET STYLES =====*/
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/*===== GENERAL DEFINITION =====*/
+body, div, span, h1, h2, h3, h4, h5, h6, p, a, address, label, figcaption, input, button, textarea {
+    font-family: var(--font-primary);
+}
+
+body{
+    background: var(--color-primary);
+}
+
+.background-tower__hanoi{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    position: relative;
+    height: 600px;
+    width: 900px;
+    background: var(--color-background);
+    margin: 0 auto;
+}
+
+.tower{
+    position: relative;
+
+}
+
+.tower::after{
+    content: ' ';
+    display: block;
+    position: absolute;
+    width: 25px;
+    height: 220px;
+    top: 380px;
+    bottom: 0px;
+    left: 130px;
+    border-radius: 10px 10px 0 0;
+    background: var(--color-pin);
+}
+
+.tower1{
+    left: 0;
+}
+
+.tower2{
+    left: 300px;
+}
+
+.tower3{
+    left: 600px;
+}
+
+.disco{
+    position: absolute;
+    height: 40px;
+    width: 250px;
+    border-radius: 15px;
+    margin-left: 15px;
+    z-index: 2;
+    transition: left 1s, bottom 1s 1s;
+}
+
+.disco{
+    background-color: var(--color-first-position);
+}
+
+.disco1{
+    background-color: var(--color-fifth-position);
+    width: 170px;
+    margin-left: 55px;
+}
+
+.disco2{
+    background-color: var(--color-fourth-position);
+    width: 190px;
+    margin-left: 45px;
+}
+
+.disco3{
+    background-color: var(--color-third-position);
+    width: 210px;
+    margin-left: 35px;
+}
+
+.disco4{
+    background-color: var(--color-second-position);
+    width: 230px;
+    margin-left: 25px;
+}
+
+.position5{
+    bottom: 0;
+}
+
+.position4{
+    bottom: 40px;
+}
+
+.position3{
+    bottom: 80px;
+}
+
+.position2{
+    bottom: 120px;
+}
+
+.position1{
+    bottom: 160px;
+}
+
+.position0{
+    bottom: 310px;
+}
