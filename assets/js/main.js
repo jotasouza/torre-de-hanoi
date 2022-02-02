@@ -1,89 +1,71 @@
 //CREATING THE REPRESENTATION OF THE TOWERS
-let towers = [[1, 2, 3, 4, 5], [], []]
+let towers = [[5, 4, 3, 2, 1], [], []]
 
 //VARIABLE THAT RECEIVES POSITIONS
-let allPositions = ['position-one', 'position-two', 'position-three', 'position-four', 'position-five',
-'tower-one', 'tower-two', 'tower-three']
+let positions = ['p0', 'p1', 'p2', 'p3', 'p4', 'p5', 't1', 't2', 't3',]
 
-let block = false
-let selectTower
-let count = 0
+//buffer de movimentos
+let movements = []
 
-//GET TOWERS ELEMENTS FOR HTML
-const main = document.querySelector('.main')
-const towerOne = document.querySelector('.tower-one')
-const towerTwo = document.querySelector('.tower-two')
-const towerThree = document.querySelector('.tower-three')
+let frase  = document.querySelector('.frase')
 
-const counter = document.querySelector('.count')
-
-const buttonReset = document.querySelector('.reset')
-
-//iteração com as torres
-towerOne.addEventListener('click', moveDiscToTower)
-towerTwo.addEventListener('click', moveDisks)
-towerThree.addEventListener('click', moveDiscToTower)
-
-//buttonReset.addEventListener('click', reset)
-
-/*FUNÇÃO QUE CRIA OS DISCOS
-function createDisks(n){
-    for(let i = 0; i < n; i++){
-        const divDisco = document.createElement('div')
-        divDisco.setAttribute('class', 'disco')
-        main.appendChild(divDisco)
-    }
-}
-createDisks(5)*/
-
-//FUNCTION THAT RENDER THE TOWERS AND DISKS
-function renderizationTowersAndDisks(){
-    
-    towers.forEach((tower, indexTower) => {
-        tower.forEach((disc, position) => {
-            let divDisco = document.createElement('div')
-            divDisco.setAttribute('class', 'disco')
-            divDisco.classList.add('disco' + disc)
-            divDisco.classList.add('tower' + (indexTower + 1))
-            divDisco.classList.add(('position' + (position + 1)))
-            main.appendChild(divDisco)
-
-        })
+function render(){
+    towers.forEach((tower, towerid) => {
+       tower.forEach((disk, position) => {
+           let d = document.querySelector(`.d${disk}`)
+           positions.forEach(position => {
+            d.classList.remove(position)
+           })
+           d.classList.add(`t${towerid + 1}`)
+           d.classList.add(`p${position + 1}`)
+       })
     })
 }
-renderizationTowersAndDisks()
 
-function moveDisks(e){
-    let top = e.currentTarget
-    console.log(top)
-
-   if(block === false){
-       selectTower = top.lastElementChild
-       console.log(top)
-       block = true
-   }else{
-       block = false
-   }
-
-   if(!top.lastElementChild){
-       top.appendChild(selectTower)
-       counter++
-       block = false
-   }else if(top.lastElementChild.clientWidth > selectTower.clientWidth){
-       top.appendChild(selectTower)
-       counter++
-       block = false
-   }
+function move(fromtower, totower){
+    //verifica se a torre de origem está vazia
+    if(!towers[fromtower].length){
+        frase.innerText = 'Torre de origem não pode ser vazia'
+        return
+    }
+    let disk = towers[fromtower].pop()
+    //faz a verificação do index da torre para não colocar
+    //um disco maior sobre o menor
+    if(towers[totower].length){
+        if(towers[totower][towers[totower].length -1] < disk){
+            let aviso = setTimeout( function(){
+                alert('Movimento inválido!')
+            }, 100)
+            return towers[fromtower].push(disk)
+        }
+    }
+    let d = document.querySelector('.d' + disk)
+    d.classList.add('p0')
+    towers[totower].push(disk)
+    setTimeout(render, 400)
 }
 
-function moveDiscToTower(fromTower, toTower){
-    let disc = towers[fromTower].shift()
-    let disco = document.querySelector('.disco' + disc)
-
-    //disco.classList.add('position0')
-
-
-    towers[toTower].unshift(disc)
-    setTimeout(renderizationTowersAndDisks, 2000)
-
+function clicktower(n){
+    //verifica se o jogo ainda não começou e informa o passo para o player
+    if(n !== null){
+        frase.innerText = 'Escolha a torre de destino'
+    }
+    if(movements.length && movements[0].length == 1){
+        movements[0].push(n)
+       //informa o próximo passo para o player 
+       frase.innerText = 'Escolha a torre de origem'
+    }else{
+        movements.unshift([n])
+    }
+    
+    console.log(movements)
 }
+
+setInterval(() => {
+    if(movements.length && movements[movements.length - 1].length == 2){
+        let m = movements.pop()
+        move(m[0], m[1])
+    }
+}, 600);
+
+render()

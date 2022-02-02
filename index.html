@@ -8,20 +8,26 @@
     <title>Torre de Hanoi</title>
 </head>
 <body>
-    <main class="background-tower__hanoi main">
-
+    <header>
+        <h1>Jogo Torre de Hanoi</h1>
+        <p class="frase">Escolha a torre de origem</p>
+    </header>
+    <main class="background-tower__hanoi">
        <!-- <div class="count"><span>Número de movimento: 0</span></div>-->
+        <!-- DEFINIÇÃO DOS DISCOS -->
+        <div class="disco d1"></div>
+        <div class="disco d2"></div>
+        <div class="disco d3"></div>
+        <div class="disco d4"></div>
+        <div class="disco d5"></div>
+        <!-- BASE -->
+        <div class="base"></div>
         <!-- DEFINIÇÃO DAS TORRES -->
-        <div class="tower tower-one"></div>
-        <div class="tower tower-two"></div>
-        <div class="tower tower-three"></div>
-        <!-- DEFINIÇÃO DOS DISCOS 
-        <div class="disco disco5"></div>
-        <div class="disco disco4"></div>
-        <div class="disco disco3"></div>
-        <div class="disco disco2"></div>
-        <div class="disco disco1"></div>
-        <footer>
+        <div class="tower" onclick="clicktower(0)"></div>
+        <div class="tower" onclick="clicktower(1)"></div>
+        <div class="tower" onclick="clicktower(2)"></div>
+       
+        <!--<footer>
             <div class="reset">
                 <button>Reiniciar</button>
             </div>

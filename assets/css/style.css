@@ -38,107 +38,106 @@ body, div, span, h1, h2, h3, h4, h5, h6, p, a, address, label, figcaption, input
 }
 
 body{
-    background: var(--color-primary);
+    background: var(--color-tertiary);
+}
+
+h1, p {
+    text-align: center;
+    margin-top: 10px;
 }
 
 .background-tower__hanoi{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     position: relative;
-    height: 600px;
-    width: 900px;
+    height: 450px;
+    width: 600px;
     background: var(--color-background);
-    margin: 0 auto;
+    margin: 30px auto;
+    position: relative;
 }
 
 .tower{
     position: relative;
-
+    cursor: pointer;
 }
 
 .tower::after{
     content: ' ';
     display: block;
     position: absolute;
-    width: 25px;
-    height: 220px;
-    top: 380px;
+    width: 20px;
+    height: 200px;
     bottom: 0px;
-    left: 130px;
+    left: 90px;
     border-radius: 10px 10px 0 0;
     background: var(--color-pin);
 }
 
-.tower1{
+.t1{
     left: 0;
 }
 
-.tower2{
-    left: 300px;
+.t2{
+    left: 200px;
 }
 
-.tower3{
-    left: 600px;
+.t3{
+    left: 400px;
+}
+
+.base{
+    position: absolute;
+    height: 20px;
+    width: 600px;
+    background: var(--color-pin);
+    bottom: 0;
 }
 
 .disco{
     position: absolute;
-    height: 40px;
-    width: 250px;
-    border-radius: 15px;
-    margin-left: 15px;
+    height: 30px;
+    width: 180px;
+    border-radius: 20px;
+    margin-left: 10px;
     z-index: 2;
-    transition: left 1s, bottom 1s 1s;
-}
-
-.disco{
     background-color: var(--color-first-position);
+    pointer-events: none;
+    transition: left .2s, bottom .2s .2s;
 }
 
-.disco1{
+.d1{
     background-color: var(--color-fifth-position);
-    width: 170px;
+    width: 60px;
+    margin-left: 70px;
+}
+.d2{
+    background-color: var(--color-fourth-position);
+    width: 90px;
     margin-left: 55px;
 }
 
-.disco2{
-    background-color: var(--color-fourth-position);
-    width: 190px;
-    margin-left: 45px;
-}
-
-.disco3{
+.d3{
     background-color: var(--color-third-position);
-    width: 210px;
-    margin-left: 35px;
+    width: 120px;
+    margin-left: 40px;
 }
 
-.disco4{
+.d4{
     background-color: var(--color-second-position);
-    width: 230px;
+    width: 150px;
     margin-left: 25px;
 }
 
-.position5{
-    bottom: 0;
-}
 
-.position4{
-    bottom: 40px;
-}
+.p1{ bottom: 20px;}
 
-.position3{
-    bottom: 80px;
-}
+.p2{ bottom: 50px;}
 
-.position2{
-    bottom: 120px;
-}
+.p3{ bottom: 80px;}
 
-.position1{
-    bottom: 160px;
-}
+.p4{ bottom: 110px;}
 
-.position0{
-    bottom: 310px;
-}
+.p5{ bottom: 140px;}
+
+.p0{ bottom: 250px;}
